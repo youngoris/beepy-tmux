@@ -1,7 +1,8 @@
 # beepy-tmux
-This is a tmux configuration for Beepy, which made by SQFMI.
+Beepy is a product manufactured by SQFMI. This repository offers a custom tmux configuration tailored for Beepy.
 
-A configuration let Tumx start at systeml lauch and neofetch output system status before the prompt string.
+This configuration allows tmux to start automatically upon system launch and displays the system status via neofetch before the prompt.
+
 <img src="/src/beepy.png" alt="Alt text" width="300"/>
 
 
