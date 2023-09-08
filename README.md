@@ -6,7 +6,7 @@ This configuration allows tmux to start automatically upon system launch and dis
 <img src="/src/beepy.png" alt="Alt text" width="300"/>
 
 
-## Prequisition
+## Prerequisite
 
 Ensure you've installed the necessary screen and keyboard drivers. Instructions can be found on the official [documentation](https://beepy.sqfmi.com/docs/getting-started)
 
@@ -88,7 +88,7 @@ Follow the steps to customize the neofetch output:
 
    *The uncomment `info` should not exceed 12 lines, otherwise the beepy will not display a complete duck ascii image.
 
-4. Change `image_sourc` value with our duck ascii file's path,a and replace `YOUR_NAME` with your username.
+4. Change `image_source` value with our duck ASCII file's path, and replace `YOUR_NAME` with your username.
 
    ```bash
    image_source="/home/YOUR_NAME/.config/neofetch/sqfmi-duck-w24.ascii"
@@ -125,7 +125,7 @@ Follow these steps to configure tmux:
    nano ~/.tmux.conf
    ```
 
-2. Add battery percent and CPU temprature inforamtion to the right of Tmux status bar, and session number to the left.
+2. Add battery percent and CPU temperature information to the right of the Tmux status bar, and the session number to the left.
 
    ```bash
    set -g status-left "[#S] "
@@ -177,7 +177,7 @@ Follow these steps to configure tmux:
    $ sudo setcap 'cap_sys_tty_config+ep' /usr/local/bin/fbterm
    ```
 
-4. Run fbterm once which create the default fbterm configure file we need to edit.
+4. Run fbterm once to create the default fbterm configuration file that we need to edit.
 
    ```bash
    $ fbterm
@@ -234,11 +234,11 @@ Follow these steps to configure tmux:
 
 All done, now enjoy your beepy!
 
-### Optinal: Install fcitx and enable IMEs 
+### Optional: Install fcitx and enable IMEs 
 
 If you wish to use input methods, you can install and configure fcitx:
 
-1.Install Fcitx
+1. Install Fcitx
 
    ```
    $ sudo apt install fcitx-frontend-fbterm
@@ -276,7 +276,7 @@ If you wish to use input methods, you can install and configure fcitx:
    exit
    ```
 
-   make this file excutable with the following code
+   make this file executable with the following code
 
    ```
    sudo chmod +x ~/fcitx-start-check.sh
@@ -291,16 +291,17 @@ If you wish to use input methods, you can install and configure fcitx:
 
    
 
-5. Reboot to your Tmux terminal, press ctrl(anwser call) + space, you will activate the input method( For example: Google Pinyin).
+5. Reboot to your Tmux terminal, press ctrl(answer call) + space, you will activate the input method( For example: Google Pinyin).
 
 ## Issues
 
 If you have any issues with this repo please let me know, glad to help.
 
-## Credites
+## Credits
 
 [CJK support on Beepy ](https://gist.github.com/charlestsai1995/54ab65a87e2e063ea25eb3aec4193fe1) @charlestsai1995
 
 [Beepy Package Repository](https://github.com/ardangelo/beepy-ppa) @ardangelo
 
 [Getting Started](https://beepy.sqfmi.com/docs/getting-started) @SQFMI
+
