@@ -1,5 +1,4 @@
 # beepy-tmux
-
 Beepy is a product manufactured by SQFMI. This repository offers a custom tmux configuration tailored for Beepy.
 
 This configuration allows tmux to start automatically upon system launch and displays the system status via neofetch before the prompt.
@@ -34,9 +33,7 @@ Ensure you've installed the necessary screen and keyboard drivers. Instructions 
 ## Configuration
 
 ### Neofetch Configuration
-
 Follow the steps to customize the neofetch output:
-
 1. Download SQFMI duck ascii file to your directory
 
    ```bash
@@ -45,11 +42,9 @@ Follow the steps to customize the neofetch output:
    ```
 
 2. Edit `config.conf` under the `~/.config/neofetch/` directory
-
    ```bash
    $ nano ~/.config/neofetch/config.conf
    ```
-
 3. Replace the function `print_info()` with the following code:
 
    ```bash
@@ -122,7 +117,6 @@ Follow the steps to customize the neofetch output:
    
 
 ### Tmux Configuration
-
 Follow these steps to configure tmux:
 
 1. Edit the Configuration File
@@ -167,9 +161,7 @@ Follow these steps to configure tmux:
    $ cd fbterm2
    $ nano ./src/fbdev.cpp  
    ```
-
    replace `/dev/fb0` with `/dev/fb1`.
-
 2. Execute the below to compile and install fbterm.
 
    ```bash
@@ -249,7 +241,7 @@ If you wish to use input methods, you can install and configure fcitx:
 1.Install Fcitx
 
    ```
-$ sudo apt install fcitx-frontend-fbterm
+   $ sudo apt install fcitx-frontend-fbterm
    ```
 
 2. Run `fcitx-config-gtk3` under Xorg to enable IMEs or go to `~/.config/fcitx` and edit `profile` (example below enables google pinyin)
