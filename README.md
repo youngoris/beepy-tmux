@@ -3,6 +3,8 @@ This is a tmux configuration for Beepy made by SQFMI.
 
 A configuration let Tumx start at systeml lauch and neofetch output system status before the prompt string.
 
+![beepy](/src/beepy.png)
+
 ## Prequisition
 
 You have to install the screen and keyboard driver through the official doc page.
@@ -17,12 +19,16 @@ https://beepy.sqfmi.com/docs/getting-started
    $ sudo apt install tmux neofetch
    ```
 
-2. Install Fbterm and CJK fonts
-
-   Download fbterm
+2. Download  Fbterm
 
    ```bash
    $ git clone https://github.com/onokatio/fbterm2.git
+   ```
+
+3. Install fonts
+
+   ```bash
+   $ sudo apt install xfonts-wqy fonts-terminus-otb fonts-dotgothic16
    ```
 
 ## Configuration
@@ -105,13 +111,13 @@ https://beepy.sqfmi.com/docs/getting-started
    disk_percent="on"
    ```
 
-Finnaly, run neofetch you will see our duck appears on your screen.
+7. Finnaly, run neofetch you will see our duck appears on your screen.
 
-```bash
-$ neofetch
-```
+   ```$ neofetch
+   $ neofetch
+   ```
 
-
+   
 
 ### Tmux Configuration
 
@@ -173,4 +179,106 @@ $ neofetch
    $ sudo setcap 'cap_sys_tty_config+ep' /usr/local/bin/fbterm
    ```
 
+4. Run fbterm once which create the default fbterm configure file we need to edit.
+
+   ```bash
+   $ fbterm
+   ```
+
+   `stdin isn't a interactive tty!` Ignore this output, it doesn't matter.
+
+   change the following
+
+   ```bash
+   font-names=Terminus,WenQuanYi Bitmap Song,DotGothic16
+   font-size=14
+   font-width=8
+   font-height=16
+   text-encodings=utf-8
+   term=xterm-mono
+   ```
+
+5. To autostart at system launch, add the following code to your shell configure file
+
+   ```bash
+   $ nano ~/.bashrc
+   ```
+
+   ```bash
+   if [ -z "$SSH_CONNECTION" ]; then
+    # if in virtual terminal, start fbterm
+      if [[ "$(tty)" =~ /dev/tty ]] && type fbterm > /dev/null 2>&1; then
+           fbterm 
+     # otherwise, start/attach to tmux
+      elif [ -z "$TMUX" ] && type tmux >/dev/null 2>&1; then
+           tmux new -As "$(basename $(tty))" 'neofetch; bash'
+      fi
+   fi
+   ```
+
    
+
+### Optinal: Install fcitx and enable IMEs 
+
+1. Now we can install fcitx and enable IMEs
+
+   ```
+   $ sudo apt install fcitx-frontend-fbterm
+   ```
+
+2. Run `fcitx-config-gtk3` under Xorg to enable IMEs or go to `~/.config/fcitx` and edit `profile` (example below enables google pinyin)
+
+   ```
+   EnabledIMList=fcitx-keyboard-us:True,googlepinyin:True,pinyin:False
+   ```
+
+3. Uncomment and change the following in `~/.fbtermrc`,
+
+   ```
+   input-method=fcitx-fbterm
+   ```
+
+4. Make `fcitx` start at system launch.
+
+   Create a script to check if `fcitx` is running in each time we create a new terminal.
+
+   ```bash
+   $ nano ~/fcitx-start-check.sh
+   ```
+
+   fill with the following
+
+   ```bash
+   #!/bin/bash
+   if ! pgrep -x "fcitx" > /dev/null; then
+       echo "fcitx is not running. Starting fcitx..."
+       nohup fcitx > /dev/null 2>&1 &
+       sleep 1  # wait fcitx to start
+   fi
+   exit
+   ```
+
+   make this file excutable with the following code
+
+   ```
+   sudo chmod +x ~/fcitx-start-check.sh
+   ```
+
+   add the below code to your `tmux.conf `
+
+   ```
+   #Start fcitx 
+   new-session -d -s default "~/fcitx-start-check.sh"
+   ```
+
+   
+
+5. Reboot to your Tmux terminal, press ctrl(anwser call) + space, you will activate the input method( For example: Google Pinyin).
+
+## Credites
+
+[CJK support on Beepy ](https://gist.github.com/charlestsai1995/54ab65a87e2e063ea25eb3aec4193fe1) @charlestsai1995
+
+[Beepy Package Repository](https://github.com/ardangelo/beepy-ppa) @ardangelo
+
+[Getting Started](https://beepy.sqfmi.com/docs/getting-started) @SQFMI
