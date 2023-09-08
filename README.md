@@ -2,8 +2,8 @@
 This is a tmux configuration for Beepy made by SQFMI.
 
 A configuration let Tumx start at systeml lauch and neofetch output system status before the prompt string.
+<img src="/src/beepy.png" alt="Alt text" width="300"/>
 
-![beepy](/src/beepy.png)
 
 ## Prequisition
 
