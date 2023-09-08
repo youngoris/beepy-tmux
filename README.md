@@ -293,6 +293,10 @@ If you wish to use input methods, you can install and configure fcitx:
 
 5. Reboot to your Tmux terminal, press ctrl(anwser call) + space, you will activate the input method( For example: Google Pinyin).
 
+## Issues
+
+If you have any issues with this repo please let me know, glad to help.
+
 ## Credites
 
 [CJK support on Beepy ](https://gist.github.com/charlestsai1995/54ab65a87e2e063ea25eb3aec4193fe1) @charlestsai1995
