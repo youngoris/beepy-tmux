@@ -1,5 +1,5 @@
 # beepy-tmux
-This is a tmux configuration for Beepy made by SQFMI.
+This is a tmux configuration for Beepy, which made by SQFMI.
 
 A configuration let Tumx start at systeml lauch and neofetch output system status before the prompt string.
 <img src="/src/beepy.png" alt="Alt text" width="300"/>
@@ -7,9 +7,7 @@ A configuration let Tumx start at systeml lauch and neofetch output system statu
 
 ## Prequisition
 
-You have to install the screen and keyboard driver through the official doc page.
-
-https://beepy.sqfmi.com/docs/getting-started
+Ensure you've installed the necessary screen and keyboard drivers. Instructions can be found on the official [documentation](https://beepy.sqfmi.com/docs/getting-started)
 
 ## Installation
 
@@ -19,13 +17,13 @@ https://beepy.sqfmi.com/docs/getting-started
    $ sudo apt install tmux neofetch
    ```
 
-2. Download  Fbterm
+2. Clone Fbterm Repository
 
    ```bash
    $ git clone https://github.com/onokatio/fbterm2.git
    ```
 
-3. Install fonts
+3. Install Essential Fonts
 
    ```bash
    $ sudo apt install xfonts-wqy fonts-terminus-otb fonts-dotgothic16
@@ -34,7 +32,7 @@ https://beepy.sqfmi.com/docs/getting-started
 ## Configuration
 
 ### Neofetch Configuration
-
+Follow the steps to customize the neofetch output:
 1. Download SQFMI duck ascii file to your directory
 
    ```bash
@@ -43,11 +41,9 @@ https://beepy.sqfmi.com/docs/getting-started
    ```
 
 2. Edit `config.conf` under the `~/.config/neofetch/` directory
-
    ```bash
    $ nano ~/.config/neofetch/config.conf
    ```
-
 3. Replace the function `print_info()` with the following code:
 
    ```bash
@@ -120,8 +116,9 @@ https://beepy.sqfmi.com/docs/getting-started
    
 
 ### Tmux Configuration
+Follow these steps to configure tmux:
 
-1. Create or Open config file
+1. Edit the Configuration File
 
    ```bash
    nano ~/.tmux.conf
@@ -157,13 +154,13 @@ https://beepy.sqfmi.com/docs/getting-started
 
 ### Fbterm Configuration
 
-1. Change  `/dev/fb0`  to  `/dev/fb1`  in /src/fbdev.cpp
+1. Edit the Configuration File
 
    ```bash
    $ cd fbterm2
    $ nano ./src/fbdev.cpp  
    ```
-
+   replace `/dev/fb0` with `/dev/fb1`.
 2. Execute the below to compile and install fbterm.
 
    ```bash
@@ -209,7 +206,7 @@ https://beepy.sqfmi.com/docs/getting-started
     # if in virtual terminal, start fbterm
       if [[ "$(tty)" =~ /dev/tty ]] && type fbterm > /dev/null 2>&1; then
            fbterm 
-     # otherwise, start/attach to tmux
+     # otherwise, start/attach to tmux and start neofetch
       elif [ -z "$TMUX" ] && type tmux >/dev/null 2>&1; then
            tmux new -As "$(basename $(tty))" 'neofetch; bash'
       fi
@@ -219,8 +216,9 @@ https://beepy.sqfmi.com/docs/getting-started
    
 
 ### Optinal: Install fcitx and enable IMEs 
+If you wish to use input methods, you can install and configure fcitx:
 
-1. Now we can install fcitx and enable IMEs
+1.Install Fcitx
 
    ```
    $ sudo apt install fcitx-frontend-fbterm
