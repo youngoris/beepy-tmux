@@ -214,9 +214,28 @@ Follow these steps to configure tmux:
    fi
    ```
 
-   
+6. Solving double prompts issue when quitting tmux with prefix key + d
+
+   ```
+   $ nano ~/bashrc
+   ```
+
+   Find PS1 setting under the line `xterm*|rxvt*)`:
+
+   ```
+   PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+   ```
+
+   replace it with:
+
+   ```
+   PS1="\[\e]0\a\]$PS1"
+   ```
+
+All done, now enjoy your beepy!
 
 ### Optinal: Install fcitx and enable IMEs 
+
 If you wish to use input methods, you can install and configure fcitx:
 
 1.Install Fcitx
